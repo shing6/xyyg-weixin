@@ -1,0 +1,15 @@
+<!--pages/shopmanage/shoppwd.wxml-->
+<view class="container">
+
+  <view class="classname">
+    <view class="tips">*请上网址https://www.shing6.cn:8081/购买卡号完成充值，在此页面填写商家订单号(支付宝账单查看)</view>
+
+    <form bindsubmit="editpwd">
+      <view class="xing">充值卡号
+        <input   type="number" placeholder-class='placeholder' placeholder='请输入商家订单号' class="in" name='no' value="" />
+      </view>
+      <button type="" form-type="submit" hover-class='button-hover' class='su'>充值</button>
+    </form>
+  </view>
+
+</view>

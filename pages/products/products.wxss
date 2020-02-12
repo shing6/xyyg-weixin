@@ -1,0 +1,86 @@
+/* pages/products/products.wxss */
+@import "../../wxSearchView/wxSearchView.wxss";
+@import "/tpls/products/products-tpl.wxss";
+.navbar{  
+  display: flex;  
+  background: #fff;
+  
+} 
+.navbar .item{
+    
+  width: 25%;
+  font-size:14px;
+  text-align:center;
+  line-height: 39rpx;
+  border-bottom: 1rpx solid #dedede;
+  padding-bottom: 20rpx;
+  
+} 
+/* 顶部导航字体颜色 */
+.navbar .item.active{  
+  color: #f0145a;  
+} 
+
+/*筛选*/
+.tab-left {
+  width: 100%;
+  line-height: 160%;
+  font-size: 32rpx;
+  border-right: solid 1px gray;
+}
+
+.tab-left .j {
+  text-align: center;
+  display: inline-block;
+  width: 25%;
+  padding: 20rpx 0;
+  position: relative;
+  background-color: #fff;
+}
+
+.tab-left .active {
+  color: #f00;
+  border-bottom: solid 5rpx red;
+}
+/*上三角*/
+.triangle-up {
+width:0;
+height:0;   
+border-left:8rpx solid transparent;   
+border-right:8rpx solid transparent;   
+border-bottom:8rpx solid #000;display:inline-block;
+float: right;
+position: absolute;
+top: 37rpx;
+margin-left: 10rpx;
+}
+ .j .san{
+border-left:8rpx solid transparent;   
+border-right:8rpx solid transparent;   
+border-bottom:8rpx solid #f00;
+   }
+/*下三角*/
+
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 8rpx solid transparent;
+    border-right: 8rpx solid transparent;
+    border-top: 8rpx solid #000;         display:inline-block;
+    position: absolute;
+    top: 47rpx;
+    margin-left: 10rpx;
+
+}
+.j .sa{
+  border-left: 8rpx solid transparent;
+  border-right: 8rpx solid transparent;
+  border-top: 8rpx solid red;   
+}
+
+.result{
+  position:absolute;
+  top: 50%;
+  left: 40%;
+}
+

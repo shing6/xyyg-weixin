@@ -1,0 +1,51 @@
+<view class="main">
+
+    <view wx:if="{{hasList}}">
+    
+    <block wx:for="{{shopList}}" wx:for-item="shopList" wx:key="{{index}}">
+       <view class='shop-box' bindtap='toShopTap' data-sellerId="{{shopList.id}}">
+        <icon wx:if="{{shopList.selected}}" type="success" color="red" data-id="{{shopList.id}}" data-shopIndex="{{index}}" size="20" class="cart-pro-select" bindtap="selectShopList"/>
+        <icon wx:else type="circle" class="cart-pro-select" size="20" data-id="{{shopList.id}}" data-shopIndex="{{index}}" bindtap="selectShopList"/>
+        <view class='shop-box-right'>
+          <image class="shop-logo" src="/images/logo/shop.png"></image>
+          <text class='shop-title'>{{shopList.name}}</text>
+          <image class="shop-go" src="/images/logo/go.png"></image>
+         </view>
+       </view>
+   
+     <view>
+     <block wx:if="{{shopList.id==item.sellerId}}"wx:for="{{carts}}" wx:key="{{index}}">
+       <view class="cart-box">
+             <view class="cart-list" >
+                 <icon wx:if="{{item.selected}}" size="20" type="success" color="red"   data-index="{{index}}"  class="cart-pro-select" bindtap="selectList"/>
+                 <icon wx:else type="circle" size="20" class="cart-pro-select"  data-index="{{index}}" bindtap="selectList"/>
+                 <navigator url="../products-item/products-item?id={{item.id}}"><image class="cart-thumb" src="{{imageUrl}}{{item.mainPic}}"></image></navigator>
+                 <text class="cart-pro-name">{{item.goodsName}}</text>
+                 <text class="cart-pro-price"  wx:if="{{item.price>0}}">￥{{item.price}}</text>
+                 <text class="cart-pro-price"wx:if="{{item.price<=0||item.price==null}}">￥{{item.oldPrice}}</text>
+                 <view class="cart-count-box">
+                     <text class="cart-count-down" bindtap="minusCount" data-obj="{{obj}}" data-index="{{index}}">-</text>
+                     <text class="cart-count-num">{{item.counts}}</text>
+                     <text class="cart-count-add" bindtap="addCount" data-index="{{index}}">+</text>
+                 </view>
+                 <text class="cart-del" bindtap="toDeleteTap" data-index="{{index}}">×</text>
+             </view>
+         </view>
+        </block>
+        
+      </view>
+      </block>
+         <view class="cart-footer">
+             <icon wx:if="{{selectAllStatus}}"size="20" type="success" color="red" class="total-select" bindtap="selectAll"/>
+             <icon wx:else type="circle" size="20"  class="total-select" bindtap="selectAll"/>
+             <text>全选</text>
+             <text class="cart-toatl-price">合计:￥{{totalPrice}}</text>
+              <text class="cart-toatl-order" bindtap='toPayTap'>结算({{cartTotalCounts}})</text>
+         </view>
+          
+        </view>
+ 
+    <view wx:else>
+        <view class="cart-no-data">购物车是空的哦~</view>
+    </view>
+</view>

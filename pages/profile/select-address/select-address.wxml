@@ -1,0 +1,42 @@
+<wxs module="phone">
+var toHide = function(array) {
+  var mphone = array.substring(0, 3) + '****' + array.substring(7);
+  return mphone;
+}
+module.exports.toHide = toHide;
+</wxs>
+
+
+<view class="container">
+  <view wx:if="{{addressList.length!=0}}">
+   <block   wx:for="{{addressList}}" wx:key="{{index}}">
+     <view class='addr'>
+       <view class="addr-container">
+         <view>
+           <text class="addr-name font">{{item.name}}</text>
+           <text class="addr-number font">{{phone.toHide(item.mobile)}}</text>
+            <text class="addr-default font" wx:if="{{item.isDefault==1}}">[默认]</text>
+         </view>
+         <view class="addr-detail font">{{item.address}} {{item.detailAddr}}</view>
+       </view>
+      <view class='addr-icon'>
+  <wxc-icon class="right-edit" type='edit' size='35' color='#999999' bindtap="editAddess" data-address="{{item}}"></wxc-icon>
+      </view>
+     </view>
+  </block>
+  </view>
+
+<view class="title"  wx:else>
+<view>您还没有添加地址</view>
+</view>
+
+ 
+ 
+
+  <view class="bottom-box">
+    <view class='arrow-right'>
+      <view class="add-btn font" bindtap="addAddess">新增收货地址</view>
+    </view>
+  </view>
+
+</view>

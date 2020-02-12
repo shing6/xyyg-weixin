@@ -1,0 +1,123 @@
+<wxs module="dateUtil" src="../../../utils/time.wxs"></wxs>
+<wxs module="filters" src="../../../utils/fixed.wxs"></wxs>
+<wxs module="phone">
+var toHide = function(array) {
+  var mphone = array.substring(0, 3) + '****' + array.substring(7);
+  return mphone;
+}
+module.exports.toHide = toHide;
+</wxs>
+<view class="container">
+  <view class="order-info">
+    <view class="item-a">下单时间：{{dateUtil.dateFormat(orderInfo.createTime)}}</view>
+    <view class="item-b">订单编号：{{orderInfo.orderNo}}</view>
+    <view class="item-c">
+      <view class="l">
+        <block wx:if="{{orderInfo.status==1||orderInfo.status==6}}">应付：</block>
+        <block wx:if="{{orderInfo.status==2||orderInfo.status==3||orderInfo.status==4||orderInfo.status==5}}">实付：</block>
+        <text class="cost">￥{{filters.toFix(orderInfo.needPrice)}}</text>
+      </view>
+      <view class="r">
+        <view class="btn active" bindtap="cancelOrder" data-id="{{orderInfo.id}}" wx:if="{{orderInfo.status==1}}">取消订单</view>
+        <view class="btn active" bindtap="payOrder" wx:if="{{orderInfo.status==1}}">去付款</view>
+        <view class="btn active" bindtap="confirmOrder" wx:if="{{orderInfo.status==3}}">确认收货</view>
+        <view class="btn active" bindtap="deleteOrder"data-id="{{orderInfo.id}}" wx:if="{{orderInfo.status==5||orderInfo.status==6||orderInfo.status==8||orderInfo.status==9}}">删除订单</view>
+        <view class="btn active" bindtap="refundOrder" wx:if="{{orderInfo.status==3||orderInfo.status==2}}">申请退款</view>
+        <view class="btn active" bindtap="callSeller">联系商家</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="order-goods">
+    <view class="h">
+      <view class="label">商品信息</view>
+      <!-- <view class="status">{{orderInfo.orderStatusText}}</view> -->
+       <block wx:if="{{orderInfo.status==1}}">
+        <view class="status">未付款</view>
+        </block>
+         <block wx:if="{{orderInfo.status==2}}">
+        <view class="status">待发货</view>
+        </block>
+         <block wx:if="{{orderInfo.status==3}}">
+        <view class="status">{{newtime}}后自动收货</view>
+        </block>
+         <block wx:if="{{orderInfo.status==4}}">
+        <view class="status">待评价</view>
+        </block>
+        <block wx:if="{{orderInfo.status==5}}">
+        <view class="status">已完成</view>
+        </block>
+        <block wx:if="{{orderInfo.status==6}}">
+        <view class="status">已取消(超时未支付)</view>
+        </block>
+        <block wx:if="{{orderInfo.status==9}}">
+        <view class="status">已取消(用户取消)</view>
+        </block>
+    </view>
+    <view class="goods">
+      <view class="item" wx:for="{{orderInfo.orderGoodsList}}" wx:key="id">
+        <view class="img">
+          <image src="{{imageUrl}}{{item.mainPic}}"></image>
+        </view>
+        <view class="info">
+          <view class="t">
+            <text class="name">{{item.goodsName}}</text>
+            <text class="number">x{{item.counts}}</text>
+          </view>
+          <view class="attr"></view>
+          <view class="price">￥{{filters.toFix(item.price)}}</view>
+          <view class="btn active" wx:if="{{item.isComment==0&&orderInfo.status==4}}">
+            <navigator url="../../comment/comment?goodsId={{item.id}}&&orderId={{orderInfo.id}}">去评价</navigator>
+          </view>
+          <!-- <view class="btn active" wx:if="{{handleOption.rebuy}}">
+            <navigator url="../../goods/goods?id={{item.goodsId}}">再次购买</navigator>
+          </view> -->
+        </view>
+      </view>
+    </view>
+
+    <view class="order-bottom">
+      <view class="address">
+        <view class="t">
+          <text class="name">{{address.name}}</text>
+          <text class="mobile">{{phone.toHide(address.mobile)}}</text>
+        </view>
+        <view class="b">{{address.address}} {{address.detailAddr}}</view>
+      </view>
+      <view class="total">
+        <view class="t">
+          <text class="label">商品合计：</text>
+          <text class="txt">￥{{filters.toFix(orderInfo.totalPrice)}}</text>
+        </view>
+        <view class="t">
+          <text class="label">运费：</text>
+          <text class="txt">￥{{orderInfo.freight}}</text>
+        </view>
+      </view>
+      <view class="pay-fee">
+        <text class="label"> 实付：</text>
+        <text class="txt">￥{{filters.toFix(orderInfo.payPrice)}}</text>
+      </view>
+    </view>
+  </view>
+ 
+</view>
+
+<!-- 密码输入框 -->
+<view wx:if='{{showPayPwdInput}}'>
+    <view class='bg_layer'></view>
+    <view class='input_main'>
+        <view class='input_title'>
+            <view class='input_back' catchtap='cancelPay'><text></text></view>
+            <text>输入支付密码</text>
+        </view>
+        <view class='input_tip'>￥{{sum}}</view>
+        <view class='input_row' catchtap='getFocus'>
+            <view class='pwd_item' wx:for='{{6}}' wx:key='item' wx:for-index='i'>
+                <text wx:if='{{pwdVal.length>i}}'></text>
+            </view>
+        </view>
+        <view class='forget_pwd' catchtap='hidePayLayer'>忘记密码</view>
+        <input class='input_control' password type='number' focus='{{payFocus}}' bindinput='inputPwd' maxlength='6'/>
+    </view>
+</view>

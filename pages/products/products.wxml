@@ -1,0 +1,46 @@
+<import src="/tpls/products/products-tpl.wxml" />
+
+<!--搜索框-->
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <form >
+      <input bindconfirm='searchBox' type="text" class="weui-search-bar__input" value="{{searchValue}}"  placeholder="搜索" />
+       </form>
+    </view>
+  </view>
+</view>
+<!--导航条-->
+<view class="tab-left" bindtap="tabFun">
+  <view class="{{tabArr.curHdIndex=='0'? 'active' : ''}} j" id="tab-hd01" data-id="0">
+    综合
+  </view>
+
+  <view class="{{tabArr.curHdIndex=='1'? 'active' : ''}} j" id="tab-hd02" data-id="1" data-p="{{p}}">销量
+
+    <view class="triangle-up {{tabArr.ab=='4'? 'san' : ''}}"></view>
+
+    <view class="triangle-down {{tabArr.ab=='5'? 'sa' : ''}}"></view>
+
+  </view>
+
+  <view class="{{tabArr.curHdIndex=='2'? 'active' : ''}} j" id="tab-hd01" data-id="2" data-t="{{t}}">价格
+
+    <view class="triangle-up {{tabArr.agg=='4'? 'san' : ''}}"></view>
+
+    <view class="triangle-down {{tabArr.agg=='5'? 'sa' : ''}}"></view>
+
+  </view>
+  <view class="{{tabArr.curHdIndex=='3'? 'active' : ''}} j" id="tab-hd02" data-id="3">新品</view>
+</view>
+
+<template is="products" wx:if="{{productsArr.length>0}}" data="{{products:productsArr,imageUrl:imageUrl}}"> </template>
+<view wx:else class='result'>暂无结果</view>
+<!-- 上拉加载样式-->
+ <view wx:if='{{hasMore}}'>
+    <view class="weui-loading"></view>
+  </view>
+  <view wx:else>
+    <view class="weui-loadmore-tips">没有更多</view>
+  </view>

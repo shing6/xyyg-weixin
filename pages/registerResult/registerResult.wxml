@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="result">
+      <image class="imgsize" src="/images/logo/gou.png"></image>
+      <view class="tip-1">申请成功</view>
+      <view  class="tip-2">请等待管理员审核</view>
+      <view  class="tip-2">审核结果将会在3个工作日内已短信的方式通知您</view>
+   </view>   
+    
+</view>

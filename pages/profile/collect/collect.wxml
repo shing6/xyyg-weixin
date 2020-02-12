@@ -1,0 +1,17 @@
+<view class="shop_list" wx:for="{{collectList}}" wx:key="id" bindtap='toDetailsTap' data-id="{{item.id}}">
+ <image class="img" src="{{imageUrl}}{{item.mainPic}}"></image>
+ <view class='shop_text'>
+   <text class="shop_name">{{item.goodsName}}</text>
+   
+   <text class="shop_adress" wx:if="{{item.price>0}}">￥{{item.price}}</text>
+   <text class="shop_adress" wx:else>￥{{item.oldPrice}}</text>
+  </view>
+  <view class='shop_star' catchtap='deleteTap' data-id="{{item.id}}">
+   <image src='/images/logo/delete.png' ></image>
+  </view>
+
+</view>
+
+
+
+

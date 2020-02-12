@@ -1,0 +1,57 @@
+page{
+  background-color: #F9F9F9;
+}
+.top{
+  width: 100%;
+  height: 300rpx;
+  background-color: #13D1BE;
+  display: flex;
+  flex-direction: column;
+}
+.top .title{
+  color: #fff;
+  margin: 50rpx 0 0 50rpx;
+}
+
+.top .price{
+  display: block;
+  color: #fff;
+  margin: 50rpx 0 0 50rpx;
+}
+.bottom{
+     padding: 20rpx 20rpx 0 50rpx;
+     font-size: 13px;
+     background-color: #fff;
+  }
+  .bottom .recharge{ 
+    padding-bottom: 20rpx;
+    border-bottom: #F3F3F3 1rpx solid;
+   }
+   .bottom .recharge .title{
+    
+   }
+  .bottom .recharge .icon{
+       float: right;
+       width: 40rpx;
+       height:40rpx;
+    }
+   .bottom .detail{
+     margin-top: 20rpx;
+     padding-bottom: 20rpx;
+     border-bottom: #F3F3F3 1rpx solid;
+   }
+     .bottom .detail .icon{
+       float: right;
+       width: 40rpx;
+       height: 40rpx;
+    }
+    .bottom .password{
+     margin-top: 20rpx;
+     padding-bottom: 20rpx;
+     border-bottom: #F3F3F3 1rpx solid;
+   }
+     .bottom .password .icon{
+       float: right;
+       width: 40rpx;
+       height:40rpx;
+    }

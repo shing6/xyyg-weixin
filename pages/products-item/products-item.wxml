@@ -1,0 +1,93 @@
+<view class='container  detail-container '>
+   <!-- 上半部分-->
+   <view class='detail-header-box'>
+    
+       <!-- 商品图片-->
+      <view class='detail-topic-img'>
+        <image  wx:if="{{product.mainPic}}" src="{{imageUrl}}{{product.mainPic}}"></image>
+      </view>
+      <view class='isloate'></view>
+       <!-- 购买栏-->
+      <view class='cart-box'>
+         <view class='cart-shop'  bindtap='shopTap' data-sellerId="{{product.sellerId}}" ><image src='../../images/logo/shop.png'></image><text>店铺</text></view>
+         <view class='cart-shop'wx:if="{{!isCollect}}" bindtap='collect' data-id="{{product.id}}"><image src='../../images/logo/no-collect.png'></image><text>收藏</text></view>
+         <view class='cart-shop'wx:if="{{isCollect}}" bindtap='collect' data-id="{{product.id}}"><image src='../../images/logo/collect.png'></image><text>已收藏</text></view>
+         <view class='cart-car' bindtap='toCartsTap'><image src='../../images/nav/cart-top.png'></image><view wx:if="{{cartTotalCounts>0}}">{{cartTotalCounts}}</view><text>购物车</text></view>
+         
+         <view class="add-cart-btn {{product.stock==0?'disable no-stock-btn':''}}" wx:if="{{product.status==1&&shop.status!=3}}"  bindtap='onAddingTocartTap'>
+           <text>加入购物车</text>
+         </view>
+          <view class="add-cart-btn disable no-stock-btn" wx:if="{{product.status==0}}"  bindtap='onAddingTocartTap'>
+           <text>已下架</text>
+         </view>
+          <view class="add-cart-btn disable no-stock-btn" wx:if="{{product.status!=0&&shop.status==3}}"  bindtap='onAddingTocartTap'>
+           <text>加入购物车</text>
+         </view>
+      </view>
+      <!-- -->
+      <view class='basic-info-box'>
+        <view class='price-name'>
+           <view class="price" wx:if="{{product.price>0}}">￥{{product.price}}</view>
+           <view class="price" wx:else>￥{{product.oldPrice}}</view>
+           <view class="name">{{product.goodsName}}</view>
+        </view>
+         <view class="stock" wx:if="{{product.stock>0}}">有货</view>
+         <view class="stock no" wx:else>缺货</view>
+         <!-- <view class="share font" open-type='share'><image class="share-logo" src='../../images/logo/share.png'></image><text>分享</text></view> -->
+         <button class="share font" plain="true" open-type="share"><image class="share-logo" src='../../images/logo/share.png'></image><text>分享</text></button>
+      </view>
+   </view>
+    <!-- 评价栏-->
+   <view class='comment'>
+      <view class='comment-title font'>评价</view>
+      <block wx:if="{{comment.length}}">
+      <view class='comment-detail'>
+        <view class='detail-top'>
+        <view class='top-star'> 
+          <view class='shop_star_before'>
+            <text >★★★★★</text>
+          </view>
+         <view style="width:{{comment[0].score*20}}%;"class='shop_star_after'>
+             <text >★★★★★</text>
+         </view>
+      </view>
+      </view>
+        <view class='detail-text font'>{{comment[0].content}}</view>
+      </view>
+      <view class='comment-more font'><text bindtap='toCommentTap'>查看更多</text></view>
+      </block>
+       <block wx:else>
+        <view class='detail-text font'>暂无评论</view>
+       </block>
+   </view>
+   <!-- 导航栏-->
+   <view class='detail-bottom-box'>
+       <view class="tabs-box">
+            <block wx:for="{{['商品详情' ,'产品参数','售后服务']}}" wx:key='id'>
+                <view class="tabs-item {{currentTabsIndex==index?'selected':''}}" bindtap="onTabsItemTap" data-index="{{index}}">
+                    {{item}}
+                </view>
+            </block>
+        </view>
+
+        <view class="product-detail-box">
+            <view class="product-detail-imgs" hidden="{{currentTabsIndex!=0}}" >
+                <block wx:for="{{product.goodsPictureList}}" wx:key='id'>
+                    <image src="{{imageUrl}}{{item.picAddr}}" mode="AspectFit"></image>
+                </block>
+            </view>
+            <view class="product-detail-properties" hidden="{{currentTabsIndex!=1}}">
+                <block wx:for="{{product.goodsDescList}}" wx:key='id'>
+                    <view class="properties-item">
+                        <view class="properties-name">{{item.name}}</view>
+                        <view class="properties-detail">{{item.detail}}</view>
+                    </view>
+                </block>
+            </view>
+
+            <view class="product-detail-protect" hidden="{{currentTabsIndex!=2}}">
+                <view></view>
+            </view>
+        </view>
+   </view>
+</view>

@@ -1,0 +1,66 @@
+<wxs module="dateUtil" src="../../utils/time.wxs"></wxs>
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="container">
+  <view class='work-title'>
+    <text class='card-title font'>{{work.title}}</text>
+    <view class="dec">
+     <text class='card-date font'>{{dateUtil.dateFormat(work.createTime)}}</text>
+     <text class='card-price font'>{{work.salary}}</text>
+    </view>
+  </view>
+  <view class='work-request'>
+    <view class="request-title">
+        <image class="logo" src='/images/logo/line.png'></image>
+        <text class='request-name font'>招聘要求</text>
+        <image class="logo-right" src='/images/logo/zhixian.png'></image>
+    </view>
+    <view class='request-time font'>
+      <text class='request-left'>结算周期:</text>
+      <text class='request-right' wx:if="{{work.type==0}}">日结</text>
+      <text class='request-right' wx:if="{{work.type==1}}">月结</text>
+      <text class='request-right' wx:if="{{work.type==2}}">完工结</text>
+    </view>
+    <view class='request-counts'>
+      <text class='request-left'>招聘人数:</text>
+      <text class='request-right'>{{work.counts}}</text>
+    </view>
+    <!-- <view class='request-gender'>
+      <text class='request-left'>性别要求:</text>
+      <text class='request-right'>男女不限</text>
+    </view> -->
+  </view>
+  <view class='work-content'>
+      <view class="request-title">
+          <image class="logo" src='/images/logo/line.png'></image>
+          <text class='request-name font'>工作内容</text>
+          <image class="logo-right" src='/images/logo/zhixian.png'></image>
+      </view>
+      <view class='content'>
+         <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+      </view>
+  </view>
+  <view class='work-time'>
+    <view class="request-title">
+        <image class="logo" src='/images/logo/line.png'></image>
+        <text class='request-name font'>工作时间</text>
+        <image class="logo-right" src='/images/logo/zhixian.png'></image>
+    </view>
+    <view class='start-time font'>
+      <text class='time-left'>开始日期:</text>
+      <text class='time-right'>{{dateUtil.dateFormat(work.startTime)}}</text>
+    </view>
+    <view class='time-line'>开始日期:|</view>
+    <view class='finsh-time font'>
+      <text class='time-left'>结束时间:</text>
+      <text class='time-right'>{{dateUtil.dateFormat(work.endTime)}}</text>
+    </view>
+  </view>
+  <view class='work-address'>
+  <view class="request-title">
+       <image class="logo" src='/images/logo/line.png'></image>
+       <text class='request-name font'>工作地点</text>
+       <image class="logo-right" src='/images/logo/zhixian.png'></image>
+   </view>
+   <view class='address'>{{work.address}}</view>
+  </view>
+</view>

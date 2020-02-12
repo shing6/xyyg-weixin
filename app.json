@@ -1,0 +1,83 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/search/search",
+    "pages/shop/shop",
+    "pages/categoryShop/categoryShop",
+    "pages/products/products",
+    "pages/hot-products/hot-products",
+    "pages/products-item/products-item",
+    "pages/message/message",
+    "pages/message/search/search",
+    "pages/message-item/message-item",
+    "pages/carts/carts",
+    "pages/pay/pay",
+    "pages/payResult/payResult",
+    "pages/registerResult/registerResult",
+    "pages/pay/select-address/select-address",
+    "pages/profile/profile",
+    "pages/profile/order/order",
+    "pages/profile/collect/collect",
+    "pages/profile/orderDetail/orderDetail",
+    "pages/profile/select-address/select-address",
+    "pages/profile/address-add/address-add",
+    "pages/profile/wallet/wallet",
+    "pages/profile/wallet/setPassword/setPassword",
+    "pages/profile/wallet/rechange/rechange",
+    "pages/profile/register/register",
+    "pages/comment/comment",
+    "pages/comment-list/comment-list",
+    "pages/order/order",
+    "pages/login/login",
+    "pages/logs/logs"
+  ],
+  "window":{
+    
+    "navigationBarBackgroundColor": "#13D1BE",
+    "navigationBarTitleText": "校园易购",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "selectedColor": "#000000",
+        "selectedIconPath":"images/nav/home-on.png",
+        "iconPath": "images/nav/home-off.png"
+      },
+      {
+        "pagePath": "pages/categoryShop/categoryShop",
+        "text": "分类",
+        "selectedColor": "#000000",
+        "selectedIconPath": "images/nav/classification-on.png",
+        "iconPath": "images/nav/classification-off.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "兼职",
+        "selectedIconPath": "images/nav/find-on.png",
+        "iconPath":"images/nav/find-off.png"
+      },
+      {
+        "pagePath": "pages/carts/carts",
+        "text": "购物车",
+        "selectedIconPath": "images/nav/cart-on1.png",
+        "iconPath": "images/nav/cart-off.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "selectedIconPath": "images/nav/my-on.png",
+        "iconPath": "images/nav/my-off.png"
+      }
+    ]
+
+  },
+  "permission": {
+       "scope.userLocation": {
+       "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}

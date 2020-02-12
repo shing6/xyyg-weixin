@@ -1,0 +1,70 @@
+<wxs module="dateUtil" src="../../utils/time.wxs"></wxs>
+<import src="../../wxParse/wxParse.wxml"/>
+<!--搜索框-->
+<!-- <view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input"  disabled='true' placeholder="搜索" bindtap="wxSearchTab"/>
+    </view>
+  </view>
+</view> -->
+<!--导航栏-->
+<!-- <view class="nav">
+<view class="nav-item"> 
+     <image class="nav-image" src='/images/nav/new.png'></image>
+     <text class="nav-text font">最新兼职</text>
+  </view>
+  <view class="nav-item"> 
+     <image class="nav-image" src='/images/nav/lightting.png'></image>
+     <text class="nav-text font">日结</text>
+  </view>
+   <view class="nav-item"> 
+     <image class="nav-image" src='/images/nav/monthly.png'></image>
+     <text class="nav-text font">月结</text>
+  </view>
+   <view class="nav-item"> 
+     <image class="nav-image" src='/images/nav/finished.png'></image>
+     <text class="nav-text font">完工结</text>
+  </view>
+    
+</view> -->
+<view class="logo">
+  <image class='logo-image'src='/images/logo/message.png' ></image>
+</view>
+
+
+<!--兼职信息-->
+<view class="title font">火爆兼职</view>
+<view class='message'>
+<block wx:for="{{workList}}" wx:key="{{info.id}}" wx:for-item="info">
+<view class="card">
+    <text class='card-title font'>{{info.title}}</text>
+    <view class="dec">
+     <text class='card-date font'>{{dateUtil.dateFormat(info.createTime)}}</text>
+    <text class='card-price font'>{{info.salary}}</text>
+    </view>
+   <!-- <text class='card-desc font'>
+     <block wx:for="{{infolist}}" wx:key="index" > 
+       <block wx:if="{{index+1 == info.detail}}">
+          <template is="wxParse" data="{{wxParseData:item}}"/>
+       </block>
+     </block>
+   </text> -->
+    <text class='card-read arrow font' bindtap='toMessageTap' data-id="{{info.id}}">查看详情</text>
+</view>
+</block>
+
+<!-- <view class="card">
+    <text class='card-title'>泛娱乐实习生招聘</text>
+    <view class="dec">
+     <text class='card-date'>2018-12-19</text>
+    <text class='card-price'>16元/小时</text>
+    </view>
+   <text class='card-desc'>【新浚资本 泛娱乐实习生招聘】 职位描述： 应聘要求： 1、知名院校在读研究生，财经类及影视类专业优先； 2、对网生内容、影视内容的投资、制作、放映（上下游产业链）有一定的了解或工作经验，对泛娱乐领域充满热情； 3、熟悉掌握行研方法及资料搜寻能力； 4、具有高度责任心和良好的沟通协调能力；要求一周内至少有3天全职 5、工作地点在陆家嘴软件园附近（近杨高中路地铁站），实习具体待遇面议。 工作内容： 1、项目资料包括市场、行业、公司信息的收集； 2、研究报告总结整理； 3、市场投融资信息整理； 4、投后项目辅助管理。   关于新浚资本： 南京高科新浚股权投资合伙企业（有限合伙）成立于2015年，首期管理基金规模达10亿人民币，由南京高科股份有限公司出资设立，南京高科新浚投资管理有限公司负责管理，专注于成长中期创业企业以及Pre-IPO阶段企业的股权投资、债权投资等，投资方向涉及大健康、大娱乐、智能制造等行业，投资主题以“新技术”和“新消费”为主导。 有意向者可投递简历到huan.li@neovisioncap.com 也可电话咨询：021-68581989 联系人: 李经理 15295596203</text>
+    <text class='card-read arrow'>查看详情</text>
+</view> -->
+</view>
+
+
+

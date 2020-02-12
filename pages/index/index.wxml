@@ -1,0 +1,86 @@
+<wxs module="filters" src="../../utils/fixed.wxs"></wxs>
+<!--搜索框-->
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input"  disabled='true' placeholder="搜索" bindtap="wxSearchTab"/>
+    </view>
+  </view>
+</view>
+<view class='index-enter'>
+  <swiper class="enter-item" indicator-dots="是否显示面板指示点" autoplay="是否自动切换" circular="{{true}}"interval="2500" duration="1000">
+  <block wx:for="{{bannerList}}"  wx:key="id">
+     <navigator  url="#" >
+       <swiper-item>
+         <image   src="{{imageUrl}}{{item.picAddr}}"  data-toUrl="{{item.toUrl}}" catchtap='toUrl' />
+       </swiper-item>
+     </navigator>
+  </block>
+
+ </swiper>
+</view>
+<view class="divider"></view>
+<!-- 热门-->
+<view class='product' bindtap='toHotProduct'>
+   <view class='remen-title'>
+     <text>热门专区</text>
+     <text class='title-right'>进入</text>
+   </view>
+    <view class='remen'>
+    <view class='remen-left'>
+     <image src="/images/logo/cake.png"/>
+     <image src="/images/logo/drink.png"/>
+    </view>
+     <view class='remen-right'>
+     <image src="/images/logo/sucai.png"/>
+    </view>
+    </view>
+   
+</view>
+<view class="divider"></view>
+<!-- 店铺信息 -->
+<block wx:for="{{shopList}}"  wx:for-item="shop" wx:key="id" wx:if="{{shop.status==2||shop.status==3}}" >
+
+<view class="shop bgw " bindtap="shopTap" data-id="{{shop.id}}">
+   <view class="shop_top ">
+    <image class="shop_logo" src="{{imageUrl}}{{shop.logoPic}}"></image>
+     <view class='shop_text'>
+    <text class="shop_title font">{{shop.name}}</text>
+    <view>
+    <text class="shop_dec font">¥{{shop.lowPrice}}起送 | </text>
+    <text class="shop_dec font">配送费¥{{shop.freight}}</text>
+     </view>
+     </view>
+      <block  wx:if="{{shop.status==3}}">
+      <image class="dy_logo" src="/images/logo/dayang.png"></image>
+      </block>
+     <view class="shop-into font">进店</view>
+   </view>
+   
+   <view class="shop_bottom">
+    <!-- wx:if="{{shop.id==goods.sellerId}}" -->
+   <block wx:for="{{shop.goodsList}}" wx:if="{{index < 3 && goods.id!=null}}" wx:for-item="goods" wx:key="id" >
+   <view class="shop_img">
+     <image class="img_item" src="{{imageUrl}}{{goods.mainPic}}"></image>
+    <text class="shop_price font" wx:if="{{goods.price>0}}">¥{{filters.toFix(goods.price)}}</text>
+    <text class="shop_price font" wx:else>¥{{filters.toFix(goods.oldPrice)}}</text>
+   </view>
+    </block>
+  </view>
+  
+</view>
+<view class="divider"></view>
+</block>
+<!-- 上拉加载样式-->
+ <view wx:if='{{hasMore}}'>
+    <view class="weui-loading"></view>
+  </view>
+  <view wx:else>
+    <view class="weui-loadmore-tips">没有更多</view>
+  </view>
+
+
+
+
+

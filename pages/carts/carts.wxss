@@ -1,0 +1,160 @@
+
+page{
+    background-color: #ffffff;
+    font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+    font-size: 32rpx;
+}
+.navigator-hover{
+    background: none;
+}
+
+.shop-box{
+   border-top: 1rpx #e9e9e9 solid;
+   border-bottom: 1rpx #e9e9e9 solid;
+   display: flex;
+   padding: 15rpx 0 15rpx 0;
+}
+.shop-box-right{
+    margin-left: 80rpx;
+    display: flex;
+}
+.shop-box .shop-box-right .shop-logo{
+   margin-top: 5rpx;
+   width: 40rpx;
+   height: 40rpx;
+}
+.shop-box .shop-box-right .shop-go{
+   margin-top: 7rpx;
+   margin-left: 80rpx;
+   width: 40rpx;
+   height: 40rpx;
+}
+.shop-box .shop-box-right .shop-title{
+   font-size: 15px;
+   margin-left: 30rpx;
+}
+.shop-box .cart-pro-select{
+  
+    position: absolute;
+    left: 20rpx;
+    margin-top: 5rpx;
+}
+.cart-box{
+    padding-bottom: 20rpx;
+}
+.cart-box:last-child{
+   padding-bottom: 80rpx;
+}
+.cart-list{
+    position: relative;
+    padding: 20rpx 20rpx 20rpx 285rpx;
+    height: 185rpx;
+    border-bottom: 1rpx solid #e9e9e9;
+}
+.cart-list .cart-pro-select{
+    position: absolute;
+    left: 20rpx;
+    top: 90rpx;
+    
+}
+
+.cart-list .cart-thumb{
+    position: absolute;
+    top: 20rpx;
+    left: 85rpx;
+    width: 185rpx;
+    height: 185rpx;
+}
+.cart-list .cart-pro-name{
+    display: inline-block;
+    width: 300rpx;
+    height: 105rpx;
+    line-height: 50rpx;
+    overflow: hidden;
+}
+.cart-list .cart-pro-price{
+    display: inline-block;
+    float: right;
+    height: 105rpx;
+    line-height: 50rpx;
+    color:#ff4422;
+}
+.cart-list .cart-count-box{
+    position: absolute;
+    left: 285;
+    bottom: 20rpx;
+    width: 250rpx;
+    height: 80rpx;
+}
+.cart-list .cart-count-box text{
+    display: inline-block;
+    line-height: 80rpx;
+    text-align: center;
+}
+.cart-count-down,.cart-count-add{
+    font-size: 44rpx;
+    width: 50rpx;
+    height: 100%;
+}
+.cart-count-num{
+    width: 150rpx;
+}
+.cart-del{
+    position: absolute;
+    right: 20rpx;
+    bottom: 20rpx;
+    width: 80rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 44rpx;
+}
+.cart-footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    padding:0 100rpx 0 80rpx;
+    box-sizing: border-box;
+    background: #fff;
+    color: #000;
+    border-top:1rpx #e9e9e9 solid;
+}
+.total-select{
+    position: absolute;
+    left: 20rpx;
+    top: 25rpx;
+    width: 45rpx;
+    height: 45rpx;
+}
+.order-icon{
+    position: absolute;
+    right: 40rpx;
+    top: 25rpx;
+    width: 45rpx;
+    height: 45rpx;
+}
+.order-icon image,.order-icon navigator{
+  display: block;
+  width: 45rpx;
+  height: 45rpx;
+}
+.cart-toatl-price{
+    margin-left:200rpx;
+    color:#13D1BE;
+}
+.cart-toatl-order{
+  position: absolute;
+  width: 150rpx;
+  background-color: #13D1BE;
+  text-align: center;
+  color: #fff;
+  right: 0rpx;
+}
+.cart-no-data{
+    padding:40rpx 0;
+    color: #999;
+    text-align: center;
+}

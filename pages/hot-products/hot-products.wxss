@@ -1,0 +1,2 @@
+/* pages/hot-products/hot-products.wxss */
+@import "/tpls/products/products-tpl.wxss";

@@ -1,0 +1,156 @@
+/* pages/message-item/message-item.wxss */
+@import "/wxParse/wxParse.wxss";
+/*兼职信息*/
+.work-title{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+}
+.card-title{
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 20rpx;
+    display: block;
+}
+.dec{
+  font-size: 14px;
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+.dec .card-date{
+    font-size:12px;
+    color:#666;
+   
+}
+
+.dec .card-price{
+  position: absolute;
+  color: #fd5f39;
+  right: 0;
+}
+/**
+要求
+*/
+.work-request{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  position:relative;
+}
+
+ .request-name{
+  font-size: 15px;
+  position: absolute;
+  top:25rpx;
+}
+
+ .logo{
+  width: 40rpx;
+  height: 50rpx;
+  
+}
+
+
+ .request-title .logo-right{
+  height: 15rpx;
+  width: 510rpx;
+  position: absolute;
+  right: 30rpx;
+  top:35rpx;
+}
+.request-line{
+     width: 100rpx;
+     border:1rpx #666 solid; 
+}
+.request-time {
+  font-size: 13px;
+  margin-left: 20rpx;
+  margin-bottom: 10rpx;
+}
+ .request-left{
+  color: #999;
+}
+.request-right{
+  margin-left: 30rpx;
+  color: #333;
+}
+
+.request-counts {
+  font-size: 13px;
+  margin-left: 20rpx;
+  margin-bottom: 10rpx;
+}
+.request-gender {
+  font-size: 13px;
+  margin-left: 20rpx;
+  margin-bottom: 10rpx;
+}
+/**
+内容
+*/
+.work-content{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+   position:relative;
+}
+.content{
+   font-size: 14px;
+   padding: 20rpx 20rpx 20rpx 20rpx;
+   color: #333;
+}
+
+/**
+时间
+*/
+.work-time{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  position:relative;
+}
+.start-time {
+  font-size: 13px;
+  margin-left: 20rpx;
+  
+}
+.finsh-time {
+  font-size: 13px;
+  margin-left: 20rpx;
+  
+}
+ .time-left{
+  color: #999;
+}
+.time-left:after {
+   content: "\25C8";
+   color: #13D1BE;
+   margin-left: 4rpx;
+}
+ .time-right{
+  margin-left: 30rpx;
+  color: #333;
+}
+.logo-time{
+   width: 12rpx;
+   height: 80rpx;
+   margin-left: 21.8%;
+   display: block;
+}
+.time-line{
+   font-size: 13px;
+   color: #fff;
+   margin-left: 20rpx;
+}
+.time-line:after{
+  font-size: 16px;
+  content: "\007C";
+  color: #13D1BE;
+}
+
+/**
+地点
+*/
+.work-address{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  position:relative;
+}
+.address{
+  font-size: 13px;
+  margin-left: 20rpx;
+  color: #333;
+}
+

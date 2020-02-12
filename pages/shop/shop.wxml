@@ -1,0 +1,57 @@
+<view class="container">
+<view class="header" >
+    <view class='shop-Info'>
+      <image class="logo" src="{{imageUrl}}{{shop.logoPic}}" />
+      <view class='shop-words'>
+        <text class="welcome-ellipsis font">欢迎光临 {{shop.name}}！</text>
+       <view>
+        <text class="welcome-ellipsis font">￥{{shop.lowPrice}}起送</text>
+        <text class="welcome-ellipsis font">|配送费￥{{shop.freight}}</text>
+        </view>
+      </view>
+       <block  wx:if="{{shop.status==3}}">
+       <image class="dy_logo" src="/images/logo/dayang.png"></image>
+      </block>
+    </view>
+  </view>
+
+  
+
+  <view class="content-container">
+
+    
+
+    <scroll-view class="classify-container" scroll-y="true" scroll-with-animation="true" >
+      <view class="classify {{classifyViewed==item.id?'active':''}}" wx:for="{{categories}}" wx:key="id" data-id="{{item.id}}" bindtap="tapClassify">
+        <view class="name {{classifyViewed==item.id?'active':''}} font">{{item.categoryName}}</view>
+      </view>
+    </scroll-view>
+
+    <scroll-view class="goods-container" scroll-y="true" scroll-top="{{scrolltop}}" >
+     
+        <view class="title font">
+          {{categoryName}}
+        </view>
+        
+       
+          <view class="goods"  wx:for="{{goodsList}}" wx:if="{{item.status==1}}" wx:key="id" data-id='{{item.id}}' bindtap="toDetailsTap">
+            <image class="pic" src="{{imageUrl}}{{item.mainPic}}">
+            </image>
+               <view class="soldInfo">
+                  <text class="shop_name font">{{item.goodsName}}</text>
+                  <view class='price'>
+                       <text class='good_price font' wx:if="{{item.price<=0}}">￥{{item.oldPrice}}</text>
+                       <text class='good_price font' wx:if="{{item.price>0}}">￥{{item.price}}</text>
+                       <text class='old_price font'  wx:if="{{item.price>0}}">￥{{item.oldPrice}}</text>
+                  </view>
+                  <text class="sold font" wx:if="{{item.counts}}">已售{{item.counts}}份</text>
+                  <text class="sold font" wx:else>已售0份</text>
+               </view>
+               <view></view>
+          </view>
+          <view class="weui-loadmore-tips font">没有更多</view>
+         
+       </scroll-view>
+  </view>
+</view>
+

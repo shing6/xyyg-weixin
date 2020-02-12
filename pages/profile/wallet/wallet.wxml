@@ -1,0 +1,21 @@
+<wxs module="filters" src="../../../utils/fixed.wxs"></wxs>
+<view class="container">
+  <view class='top'>
+      <text class='title'>钱包余额(元)</text>
+      <text class='price'>¥ {{filters.toFix(wallet.money)}}</text>
+  </view>
+  <view class='bottom'>
+    <view class='recharge' bindtap='toRecharge'>
+     <text class='font title'>充值</text>
+     <image class='icon' src="/images/nav/right-icon.png" />
+    </view>
+    <!-- <view class='detail'>
+     <text class='font title'>明细</text>
+       <image class='icon' src="/images/nav/right-icon.png" />
+    </view> -->
+    <view class='password' bindtap='toSetPassword'>
+     <text class='font title'>修改支付密碼</text>
+       <image class='icon' src="/images/nav/right-icon.png" />
+    </view>
+  </view>
+</view>

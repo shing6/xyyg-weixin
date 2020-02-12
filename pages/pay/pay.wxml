@@ -1,0 +1,143 @@
+<wxs module="phone">
+var toHide = function(array) {
+  var mphone = array.substring(0, 3) + '****' + array.substring(7);
+  return mphone;
+}
+module.exports.toHide = toHide;
+</wxs>
+<wxs module="filters" src="../../utils/fixed.wxs"></wxs>
+
+<view class="main">
+    <navigator url="./select-address/select-address">
+        <view wx:if="{{hasAddress}}" class="orders-address">
+            <text class="orders-address-name font">收货人: {{address.name}}</text>
+            <text class="orders-address-phone font">电话: {{phone.toHide(address.mobile)}}</text>
+            <view class="orders-address-detail font">{{address.address}} {{address.detailAddr}}</view>
+        </view>
+        <view wx:else class="orders-no-address font">添加收货地址</view>
+    </navigator>
+    <block wx:for="{{shopList}}" wx:for-item="shopList" wx:key="{{index}}">
+   
+    <view class='orders-shop'>
+        <image class="shop-logo" src="/images/logo/shop.png"></image>
+        <text class='shop-title font'>{{shopList.name}}></text>
+    </view>
+    <view class="orders-box">
+     <block wx:if="{{item.sellerId==shopList.id}}" wx:for="{{orders}}" wx:key="index">
+        <view  class="orders-list">
+            <image class="orders-thumb" src="{{imageUrl}}{{item.mainPic}}"></image>
+            <view class="orders-pro-name font">{{item.goodsName}}</view>
+            <view class='orders-right'>
+            <view class="orders-pro-price font" wx:if="{{item.price>0}}">￥{{filters.toFix(item.price)}}</view>
+            <view class="orders-pro-price font" wx:if="{{item.price<=0||item.price==null}}">￥{{filters.toFix(item.oldPrice)}}</view> 
+            <view  class="orders-count-num font">×{{item.counts}}</view> 
+            </view>
+        </view>
+      </block>
+    </view>
+    <view>
+    <view class='freight'>
+         <view class="shop-freight">
+         <text class='shop-freight-left font'>商品金额</text>
+         <text class='shop-freight-right font'>￥{{filters.toFix(totalList[index])}}</text>
+         </view>
+         <view class="shop-freight">
+         <text class='shop-freight-left font'>配送费</text>
+         <text class='shop-freight-right font'>￥{{filters.toFix(shopList.freight)}}</text>
+         </view>
+         <view class="shop-freight">
+         <text class='shop-freight-left font'>小计</text>
+         <text class='shop-freight-right font'>￥{{filters.toFix(totalList[index]+shopList.freight)}}</text>
+         </view>
+    </view>
+    </view>
+  </block>
+    <view class="orders-footer" wx:if="{{distance<=5}}">
+        <view class="orders-footer-total font">实付金额：￥{{sum}}</view>
+        <view class="orders-footer-btn" >
+          <!-- 1 -->
+             <form bindsubmit="formSubmit" report-submit="{{true}}">
+               <!-- 2 -->
+               <button formType="submit" class='btn'>
+                 <form bindsubmit="formSubmit" report-submit="{{true}}">
+                   <button formType="submit" class='btn'>
+                     <!-- 3 -->
+                     <form bindsubmit="formSubmit" report-submit="{{true}}">
+                       <button formType="submit" class='btn'>
+                         <!-- 4 -->
+                         <form bindsubmit="formSubmit" report-submit="{{true}}">
+                           <button formType="submit" class='btn'>
+                            <!--5-->
+                             <form bindsubmit="formSubmit" report-submit="{{true}}">
+                               <button formType="submit" class='btn'>
+                                   <!--6-->
+                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
+                                    <button formType="submit" class='btn'>
+                                         <!--7-->
+                                        <form bindsubmit="formSubmit" report-submit="{{true}}">
+                                           <button formType="submit" class='btn'>
+                                                    <!--8-->
+                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
+                                                    <button formType="submit" class='btn'>
+                                                             <!--9-->
+                                                          <form bindsubmit="formSubmit" report-submit="{{true}}">
+                                                             <button formType="submit" class='btn'>
+                                                                     <!--10-->
+                                                                   <form bindsubmit="formSubmit" report-submit="{{true}}">
+                                                                      <button formType="submit" class='btn'>
+                                                                               <!--11-->
+                                                                           <form bindsubmit="formSubmit" report-submit="{{true}}">
+                                                                              <button formType="submit" class='btn'>
+                                                                                 <!--12-->
+                                                                                 <form bindsubmit="formSubmit" report-submit="{{true}}">
+                                                                                    <button formType="submit" class='btn'>
+                                                                                          <view class='u-publish-btn' >付款</view>
+                                                                                    </button>
+                                                                                  </form>   
+                                                                              </button>
+                                                                            </form>
+                                                                      </button>
+                                                                    </form> 
+                                                             </button>
+                                                           </form>
+                                                    </button>
+                                                  </form>
+                                           </button>
+                                         </form>
+                                         
+                                    </button>
+                                  </form>
+                               </button>
+                             </form>
+                           </button>
+                         </form>
+                       </button>
+                     </form>
+                   </button>
+                 </form>
+               </button>
+             </form>
+        </view>
+    </view>
+</view>
+<view class="orders-footer" wx:if="{{distance>5}}">
+  <view class="tips font">超出配送范围</view>
+</view>
+<!-- 密码输入框 -->
+<view wx:if='{{showPayPwdInput}}'>
+    <view class='bg_layer'></view>
+    <view class='input_main'>
+        <view class='input_title'>
+            <view class='input_back' catchtap='cancelPay'><text></text></view>
+            <text>输入支付密码</text>
+        </view>
+        <view class='input_tip'>￥{{sum}}</view>
+        <view class='input_row' catchtap='getFocus'>
+            <view class='pwd_item' wx:for='{{6}}' wx:key='item' wx:for-index='i'>
+                <text wx:if='{{pwdVal.length>i}}'></text>
+            </view>
+        </view>
+        <view class='forget_pwd' catchtap='hidePayLayer'>忘记密码</view>
+        <input class='input_control' password type='number' focus='{{payFocus}}' bindinput='inputPwd' maxlength='6'/>
+    </view>
+</view>

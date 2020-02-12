@@ -1,0 +1,24 @@
+/* pages/registerResult/registerResult.wxss */
+page{
+
+    line-height: 1;
+
+}
+.result image{
+    width: 150rpx;
+    height: 150rpx;
+    display: block;
+    margin: auto;
+    margin-top: 100rpx;
+}
+.result .tip-1{
+  margin-left: 300rpx;
+  margin-top: 30rpx;
+  
+}
+.tip-2{
+  margin-top: 30rpx;
+  font-size: 13px;
+  color: #999;
+  text-align:center;
+}

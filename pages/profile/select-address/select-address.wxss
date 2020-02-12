@@ -1,0 +1,67 @@
+page{
+   background-color: #f7f5f5; 
+}
+.addr{
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1rpx #eee solid;
+}
+.addr-container{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  width: 100%;
+}
+.addr-container .addr-name{
+  font-size: 15px;
+}
+.addr-container .addr-number{
+  margin-left: 80rpx;
+  font-size: 15px;
+}
+.addr-container .addr-default{
+  margin-left: 50rpx;
+  color: red;
+  font-size: 15px;
+}
+.addr-container .addr-detail{
+  width: 90%;
+  margin-top: 15rpx;
+  font-size: 15px;
+}
+.addr .addr-icon{
+  position: absolute;
+  right: 30rpx;
+}
+
+
+
+
+.bottom-box {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  font-size: 28rpx;
+  color: #000;
+  border-top: 1rpx solid #f4f4f4;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #fff;
+}
+
+.bottom-box .arrow-right {
+  background: url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 705rpx center;
+  background-size: 15rpx auto;
+}
+
+.bottom-box .arrow-right .add-btn {
+  margin-left: 30rpx;
+  padding-left: 70rpx;
+  background: url(https://cdn.it120.cc/images/weappshop/add-addr.png) no-repeat left center;
+  background-size: 40rpx auto;
+}
+
+.title{
+    padding:40rpx 0;
+    color: #999;
+    text-align: center;
+}

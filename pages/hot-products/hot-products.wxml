@@ -1,0 +1,2 @@
+<import src="/tpls/products/products-tpl.wxml" />
+<template is="products" wx:if="{{productsArr.length>0}}" data="{{products:productsArr,imageUrl:imageUrl}}"> </template>

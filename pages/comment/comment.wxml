@@ -1,0 +1,28 @@
+<view class='comment-top'>
+  <text class='title font'>描述相符</text>
+  <view class="star-pos">
+      <image class='stars' bindtap="changeColor" data-index='0' data-no="{{item}}" wx:for="{{stardata}}" wx:key=""
+      src="{{flag[0]>=item? '../../images/logo/full-star.png': '../../images/logo/no-star.png'}}"/>
+      <view class="stars-detail">{{startext[0]}}</view>
+  </view>
+</view>
+<view class='comment-middle'>
+      <textarea class='middle-text' focus="true" maxlength="150" placeholder="宝贝满足你的期待吗?说说它的优点和美中不足的地方吧" bindinput='handleContentInput'></textarea>
+       <text class="count">{{150 - content.length}}</text>
+</view>
+<!--上传图片  -->
+<view class="upload-img">
+  <view  class="imgs-style" wx:for="{{arrimg}}" wx:key="{{arrimg}}" bindtap="previewImage" id="{{item}}"> 
+        <view class="close" catchtap="closeImgFn"  id="{{index}}">
+                <image src="/images/logo/close.png"></image>
+         </view>
+       <image src="{{item}}" data-id="{{index}}"></image>
+    </view>
+    <!-- <view class='imgs'><image></image></view> -->
+    <image   src="/images/logo/upload.png" bindtap="chooseimage" bindtouchstart=""></image>
+    <text>{{index}}/{{len}}</text>
+    
+</view>
+<view class='comment-bottom'  bindtap="sumitComment">
+  <text>发表评价</text>
+</view>

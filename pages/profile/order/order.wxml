@@ -1,0 +1,76 @@
+<wxs module="filters" src="../../../utils/fixed.wxs"></wxs>
+<view class="container">
+  <view class="orders-switch">
+    <view class="item {{ showType == 0 ? 'active' : ''}}" bindtap="switchTab" data-index='0'>
+      <view class="txt">全部</view>
+    </view>
+    <view class="item {{ showType == 1 ? 'active' : ''}}" bindtap="switchTab" data-index='1'>
+      <view class="txt">待付款</view>
+    </view>
+    <view class="item {{ showType == 2 ? 'active' : ''}}" bindtap="switchTab" data-index='2'>
+      <view class="txt">待发货</view>
+    </view>
+    <view class="item {{ showType == 3 ? 'active' : ''}}" bindtap="switchTab" data-index='3'>
+      <view class="txt">待收货</view>
+    </view>
+    <view class="item {{ showType == 4 ? 'active' : ''}}" bindtap="switchTab" data-index='4'>
+      <view class="txt">待评价</view>
+    </view>
+  </view>
+  <view class="no-order" wx:if="{{orderList.length <= 0}}">
+    <view class="c">
+      <image src="http://nos.netease.com/mailpub/hxm/yanxuan-wap/p/20150730/style/img/icon-normal/noCart-a8fe3f12e5.png" />
+      <text>还没有任何订单呢</text>
+    </view>
+  </view>
+
+  <view class="orders">
+    <navigator url="../orderDetail/orderDetail?id={{item.id}}" class="order" open-type="navigate" wx:for="{{orderList}}" wx:key="id" wx:if="{{item.isDelete==0}}">
+      <view class="h">
+        <view class="l">订单编号：{{item.orderNo}}</view>
+        <block wx:if="{{item.status==1}}">
+        <view class="r">未付款</view>
+        </block>
+         <block wx:if="{{item.status==2}}">
+        <view class="r">待发货</view>
+        </block>
+         <block wx:if="{{item.status==3}}">
+        <view class="r">待收货</view>
+        </block>
+         <block wx:if="{{item.status==4}}">
+        <view class="r">待评价</view>
+        </block>
+        <block wx:if="{{item.status==5}}">
+        <view class="r">已完成</view>
+        </block>
+        <block wx:if="{{item.status==6||item.status==9}}">
+        <view class="r">已取消</view>
+        </block>
+        <block wx:if="{{item.status==7}}">
+        <view class="r">申请退款中</view>
+        </block>
+        <block wx:if="{{item.status==8}}">
+        <view class="r">已退款</view>
+        </block>
+
+      </view>
+      <view class="goods" wx:for="{{item.orderGoodsList}}" wx:key="id" wx:for-item="gitem">
+        <view class="img">
+          <image src="{{imageUrl}}{{gitem.mainPic}}"></image>
+        </view>
+        <view class="info">
+          <text class="name">{{gitem.goodsName}}</text>
+          <text class="number">共{{gitem.counts}}件商品</text>
+        </view>
+        <view class="status"></view>
+      </view>
+      <view class="b">
+        <view class="l"><block wx:if="{{item.status==1||item.status==6}}">应付：</block>
+        <block wx:if="{{item.status==2||item.status==3||item.status==4||item.status==5}}">实付：</block>￥{{filters.toFix(item.needPrice)}}</view>
+        <view class="capsule-tag">
+          <zan-capsule color="#a78845" leftText="" rightText="团购" wx:if="{{item.isGroupin}}" />
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

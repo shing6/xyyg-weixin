@@ -1,0 +1,54 @@
+<wxs module="dateUtil" src="../../utils/time.wxs"></wxs>
+<view class="comments">
+  <view class="h">
+    <view class="item {{ showType == 0 ? 'active' : ''}}" bindtap="switchTab" data-index='0'>
+      <view class="txt">全部({{allCount}})</view>
+    </view>
+    <view class="item {{ showType == 1 ? 'active' : ''}}" bindtap="switchTab" data-index='1'>
+      <view class="txt">好评({{goodCount}})</view>
+    </view>
+    <view class="item {{ showType == 2 ? 'active' : ''}}" bindtap="switchTab" data-index='2'>
+      <view class="txt">中评({{middleCount}})</view>
+    </view>
+    
+    <view class="item {{ showType == 3 ? 'active' : ''}}" bindtap="switchTab" data-index='3'>
+      <view class="txt">差评({{badCount}})</view>
+    </view>
+
+  </view>
+  <view class="b">
+    <view class="item" wx:for="{{allCommentList}}" wx:key="id">
+      <view class="info">
+        <view class="user">
+          <image src="{{item.wechatUser.avatarUrl}}"></image>
+          <text>{{item.wechatUser.nickName}}</text>
+        </view>
+        <view class="time">{{dateUtil.dateFormat(item.createTime)}}</view>
+      </view>
+      <view class='shop_star'>
+        <view class='shop_star_before'>
+         <text >★★★★★</text>
+      </view>
+     <view style="width:{{item.score*20}}%;"class='shop_star_after'>
+     <text >★★★★★</text>
+  </view>
+</view>
+      <view class="comment">{{item.content}}</view>
+      <view class="imgs" wx:if="{{item.commentPictureList[0].picAddr}}">
+        <image class="img" wx:for="{{item.commentPictureList}}" wx:key="pitem" wx:for-item="pitem" src="{{imageUrl}}{{pitem.picAddr}}"bindtap="previewImage" data-src="{{imageUrl}}{{pitem.picAddr}}"></image>
+      </view>
+      <view class="customer-service" wx:if="{{item.reply.content}}">
+        <text class="u">商家回复：</text>
+        <text class="c">{{item.reply.content}}</text>
+      </view>
+    </view>
+
+  </view>
+</view>
+<!-- 上拉加载样式-->
+ <view wx:if='{{hasMore}}'>
+    <view class="weui-loading"></view>
+  </view>
+  <view wx:else>
+    <view class="weui-loadmore-tips">没有更多</view>
+  </view>

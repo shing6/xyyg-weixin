@@ -1,0 +1,122 @@
+@import "../../wxSearchView/wxSearchView.wxss";
+
+/*首页轮播图*/
+.index-enter .enter-item {
+  width: 100%;
+  height: 490rpx;
+
+}
+.index-enter .enter-item image{
+  width: 100%;
+  height: 490rpx;
+
+}
+
+/*商店展示*/
+.shop{
+   
+  padding: 20rpx;
+  border-bottom: 1rpx solid #ddd;
+ 
+}
+.shop .shop_top{
+  height: 135rpx;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  border-bottom: 1rpx solid #ddd;
+  margin-bottom: 10rpx;
+}
+.shop .shop_top .shop_logo{
+    margin-right: 20rpx;
+    height: 100rpx;
+    width: 100rpx;
+}
+.dy_logo{
+    display: block;
+     margin-left: 20rpx; 
+    height: 85rpx;
+    width: 85rpx;
+}
+.shop .shop_top .shop_text{
+  display: flex;
+  flex-direction: column;
+  color: #666;
+  line-height: 1.8;
+  font-size: 12px;
+}
+.shop .shop_top .shop-into{
+     position: absolute;
+     width: 80rpx;
+     height: 40rpx;
+     right: 0;
+     top:25rpx;
+     font-size: 10px;
+     line-height: 40rpx; 
+     text-align: center;  
+     background-color: #13D1BE;
+}
+.shop .shop_top .shop_text .shop_title{
+   color: #333;
+   font-weight: 700;
+  font-size: 16px;
+}
+
+.shop .shop_bottom{
+      display: flex;
+}
+.shop .shop_bottom .shop_img{
+      border:1rpx solid #ddd;
+      height: 200rpx;
+      width: 30.33333%;
+      margin-left: 2%;
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;
+      position: relative;
+}
+.shop .shop_bottom .shop_img .img_item{
+    height: 100%;
+    width: 100%;
+}
+.shop .shop_bottom .shop_img .shop_price{
+  background:rgba(27, 25, 25, 0.3);
+  color:#fff;
+  width: 100%;
+  font-size: 35rpx;
+  bottom: 0; 
+  position: absolute;
+}
+.remen{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  display: flex;
+}
+.remen-left {
+  
+}
+.remen-left image{
+  width: 300rpx;
+  height:200rpx;
+  border:1rpx solid #ddd; 
+  display: block
+}
+.remen-right image{
+  width: 400rpx;
+  height:400rpx; 
+  border:1rpx solid #ddd;
+}
+.remen-title{
+  margin-top: 10rpx;
+  margin-left: 50rpx;
+  font-size: 13px;
+  font-weight: 700;
+}
+.title-right{
+  font-size: 13px;
+  color: #ccc;
+  float: right;
+  margin-right: 50rpx;
+}
+
